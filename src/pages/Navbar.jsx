@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.png";
+import nav from "../assets/navbar.png";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,19 +10,17 @@ export default function Navbar() {
     <header className="bg-[#FAF7F3] sticky top-0 z-50 border-b border-transparent hover:border-[#E5E7EB] transition-all duration-300">
       <div className="w-full px-8 lg:px-10 xl:px-6">
         <div className="h-[90px] flex items-center">
-
           {/* Logo */}
           <div className="flex-shrink-0">
             <img
-              src={logo}
+              src={nav}
               alt="NovaEdge"
-              className="h-[65px] lg:h-[75px] w-auto object-contain"
+              className="h-[65px] lg:h-[85px] w-auto object-contain "
             />
           </div>
 
           {/* Desktop Right Side */}
           <div className="hidden lg:flex items-center ml-auto gap-16">
-
             {/* Menu */}
             <nav className="flex items-center gap-14">
               <a
@@ -51,8 +50,6 @@ export default function Navbar() {
               >
                 CONTACT
               </a>
-
-              
             </nav>
 
             {/* Button */}
@@ -84,7 +81,6 @@ export default function Navbar() {
           >
             {isOpen ? <X size={30} /> : <Menu size={30} />}
           </button>
-
         </div>
       </div>
 
@@ -95,7 +91,6 @@ export default function Navbar() {
         }`}
       >
         <div className="bg-white border-t border-gray-200 px-6 py-5 flex flex-col gap-5">
-
           <a
             href="#home"
             className="text-sm font-semibold text-[#0F172A] hover:text-[#C88A2D]"
@@ -107,7 +102,7 @@ export default function Navbar() {
             href="#about"
             className="text-sm font-semibold text-[#0F172A] hover:text-[#C88A2D]"
           >
-            SERVICES 
+            SERVICES
           </a>
 
           <a
@@ -143,7 +138,6 @@ export default function Navbar() {
           >
             LET'S TALK
           </a>
-
         </div>
       </div>
     </header>

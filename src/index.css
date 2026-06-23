@@ -1,9 +1,6 @@
 @import "tailwindcss";
-@media (min-width: 768px) {
-  body {
-    cursor: none;
-  }
-}
+
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
@@ -86,4 +83,41 @@ html {
 @keyframes float {
   0%,100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
+}
+
+/* Mobile & Tablet */
+@media (max-width: 1023px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html {
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FAF7F3;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #D08A1A;
+    border-radius: 10px;
+    border: 2px solid #FAF7F3;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #BB6805;
+  }
+
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #D08A1A #FAF7F3;
+  }
 }

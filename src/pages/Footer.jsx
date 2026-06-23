@@ -34,7 +34,7 @@ export default function Footer() {
                 className="cursor-pointer hover:text-[#D89A1D] transition"
               />
 
-              <FaBehance
+              <FaWhatsapp
                 size={18}
                 className="cursor-pointer hover:text-[#D89A1D] transition"
               />
@@ -44,7 +44,7 @@ export default function Footer() {
                 className="cursor-pointer hover:text-[#D89A1D] transition"
               />
 
-              <FaWhatsapp
+              <FaBehance
                 size={18}
                 className="cursor-pointer hover:text-[#D89A1D] transition"
               />

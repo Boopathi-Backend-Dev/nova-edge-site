@@ -108,11 +108,10 @@ export default function HeroSection() {
           </div>
 
           {/* Right Image */}
-     <div className="relative flex justify-center lg:justify-end items-center mt-4 lg:mt-0">
-  
-  {/* Elevate Background Effect */}
-  <div
-    className="
+          <div className="relative flex justify-center lg:justify-end items-center mt-4 lg:mt-0">
+            {/* Elevate Background Effect */}
+            <div
+              className="
     
       absolute
       w-[280px]
@@ -126,12 +125,12 @@ export default function HeroSection() {
       blur-[120px]
       animate-pulse
     "
-  />
-<div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-<img
-  src={heroImg}
-  alt="Hero"
-  className="
+            />
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+              <img
+                src={heroImg}
+                alt="Hero"
+                className="
     max-w-[320px]
     lg:mb-5
     -translate-x-10
@@ -145,15 +144,15 @@ export default function HeroSection() {
     lg:-translate-x-20
     lg:-translate-y-4
 
-    xl:-translate-x-40
+    xl:-translate-x-20
     xl:-translate-y-8
 
     h-auto
     object-contain
   "
-/>
-</div>
-</div>
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
