@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import logo1 from "../assets/client1.jpeg";
 import logo2 from "../assets/client2.png";
@@ -23,22 +24,63 @@ export default function TrustedBrands() {
     }
   };
 
+  const headingVariant = {
+    hidden: {
+      opacity: 0,
+      y: 40,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+      },
+    },
+  };
+
+  const sliderVariant = {
+    hidden: {
+      opacity: 0,
+      y: 60,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+      },
+    },
+  };
+
   return (
-    <section className="py-10 sm:py-12 md:py-14 lg:pb-0">
+    <section className="py-10 sm:py-12 md:py-14 lg:pb-0 overflow-hidden">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6">
+
         {/* Heading */}
-        <div className="text-center mb-6 md:mb-8">
+        <motion.div
+          variants={headingVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          className="text-center mb-6 md:mb-8"
+        >
           <p className="text-[10px] sm:text-xs md:text-sm uppercase tracking-[4px] text-gray-500 font-semibold">
             TRUSTED BY BRANDS
           </p>
-        </div>
+        </motion.div>
 
         {/* Logo Slider */}
-        <div className="overflow-hidden py-6 sm:py-8 md:py-10">
+        <motion.div
+          variants={sliderVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="overflow-hidden py-6 sm:py-8 md:py-10"
+        >
           <div className="slider">
             <div className="slide-track">
               {[...logos, ...logos, ...logos].map((logo, index) => (
-                <img
+                <motion.img
                   key={index}
                   src={logo}
                   alt={`Client ${index + 1}`}
@@ -48,11 +90,33 @@ export default function TrustedBrands() {
                   onMouseLeave={resumeSlider}
                   onTouchStart={pauseSlider}
                   onTouchEnd={resumeSlider}
+                  initial={{
+                    opacity: 0,
+                    y: 40,
+                    scale: 0.8,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                  }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.05,
+                  }}
+                  whileHover={{
+                    scale: 1.08,
+                    y: -8,
+                    transition: {
+                      duration: 0.3,
+                    },
+                  }}
                 />
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style jsx>{`
@@ -67,6 +131,7 @@ export default function TrustedBrands() {
           align-items: center;
           width: max-content;
           animation: scroll 25s linear infinite;
+          will-change: transform;
         }
 
         .brand-logo {
@@ -75,15 +140,8 @@ export default function TrustedBrands() {
           object-fit: contain;
           margin: 0 40px;
           flex-shrink: 0;
-          image-rendering: auto;
-          opacity: 1;
           cursor: pointer;
-          transition: transform 0.3s ease;
-        }
-
-        /* Logo touch panna mattum effect */
-        .brand-logo:hover {
-          transform: scale(1.05);
+          user-select: none;
         }
 
         @media (max-width: 1024px) {
