@@ -3,24 +3,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>https://nova-edge-site.vercel.app/</loc>
+<loc>https://novaedgeofficial.vercel.app/</loc>
 <priority>1.0</priority>
 </url>
 
 <url>
-<loc>https://nova-edge-site.vercel.app/about</loc>
+<loc>https://novaedgeofficial.vercel.app/about</loc>
 </url>
 
 <url>
-<loc>https://nova-edge-site.vercel.app/services</loc>
+<loc>https://novaedgeofficial.vercel.app/services</loc>
 </url>
 
 <url>
-<loc>https://nova-edge-site.vercel.app/portfolio</loc>
+<loc>https://novaedgeofficial.vercel.app/portfolio</loc>
 </url>
 
 <url>
-<loc>https://nova-edge-site.vercel.app/contact</loc>
+<loc>https://novaedgeofficial.app/contact</loc>
 </url>
 
 </urlset>
