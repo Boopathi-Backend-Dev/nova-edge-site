@@ -6,6 +6,7 @@ import {
   BadgePercent,
   ArrowRight,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 import webDesign from "../assets/laptop.jpeg";
 import graphicDesign from "../assets/last.jpeg";
@@ -44,6 +45,30 @@ export default function ServicesSection() {
     },
   ];
 
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const item = {
+    hidden: {
+      opacity: 0,
+      y: 60,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section
       id="service"
@@ -51,118 +76,135 @@ export default function ServicesSection() {
     >
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10">
         {/* Heading */}
-        <div className="text-center mb-10 md:mb-14 lg:mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-10 md:mb-14 lg:mb-16"
+        >
           <p className="text-[#D08A1A] text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase">
             Our Services
           </p>
 
           <h2
             className="
-          mt-3
-          text-2xl
-          sm:text-3xl
-          md:text-4xl
-          lg:text-5xl
-          xl:text-[56px]
-          font-bold
-          text-[#0F172A]
-          leading-tight
-        "
+              mt-3
+              text-2xl
+              sm:text-3xl
+              md:text-4xl
+              lg:text-5xl
+              xl:text-[56px]
+              font-bold
+              text-[#0F172A]
+              leading-tight
+            "
           >
             SOLUTIONS THAT ELEVATE BRANDS
           </h2>
 
-          <div className="w-16 h-[3px] bg-[#D08A1A] mx-auto my-4 sm:my-5"></div>
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: 64 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="h-[3px] bg-[#D08A1A] mx-auto my-4 sm:my-5"
+          />
 
           <p
             className="
-          max-w-2xl
-          mx-auto
-          px-2
-          text-[#64748B]
-          text-sm
-          sm:text-base
-          md:text-lg
-          leading-7
-          sm:leading-8
-        "
+              max-w-2xl
+              mx-auto
+              px-2
+              text-[#64748B]
+              text-sm
+              sm:text-base
+              md:text-lg
+              leading-7
+              sm:leading-8
+            "
           >
-            From digital to print, and everything in between — we create designs
-            that communicate, captivate and convert.
+            From digital to print, and everything in between — we create
+            designs that communicate, captivate and convert.
           </p>
-        </div>
+        </motion.div>
 
         {/* Cards */}
-        <div
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
           className="
-        grid
-        grid-cols-1
-        sm:grid-cols-2
-        lg:grid-cols-3
-        xl:grid-cols-4
-        gap-5
-        md:gap-6
-        lg:gap-8
-      "
+            grid
+            grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            xl:grid-cols-4
+            gap-5
+            md:gap-6
+            lg:gap-8
+          "
         >
           {services.map((service, index) => {
             const Icon = service.icon;
 
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={item}
+                whileHover={{
+                  y: -12,
+                  transition: { duration: 0.3 },
+                }}
                 className="
-              relative
-              group
-              bg-white
-              rounded-xl
-              border
-              border-[#ECECEC]
-              overflow-hidden
-              flex
-              flex-col
-              h-full
-              transition-all
-              duration-500
-              hover:-translate-y-2
-              lg:hover:-translate-y-3
-              hover:border-[#D08A1A]
-              hover:shadow-[0_25px_60px_rgba(208,138,26,0.18)]
-              cursor-pointer
-            "
+                  relative
+                  group
+                  bg-white
+                  rounded-xl
+                  border
+                  border-[#ECECEC]
+                  overflow-hidden
+                  flex
+                  flex-col
+                  h-full
+                  hover:border-[#D08A1A]
+                  hover:shadow-[0_25px_60px_rgba(208,138,26,0.18)]
+                  cursor-pointer
+                "
               >
                 {/* Glow */}
                 <div
                   className="
-                absolute inset-0
-                bg-gradient-to-br
-                from-[#D08A1A]/5
-                to-transparent
-                opacity-0
-                group-hover:opacity-100
-                transition-all
-                duration-500
-                pointer-events-none
-              "
+                    absolute
+                    inset-0
+                    bg-gradient-to-br
+                    from-[#D08A1A]/5
+                    to-transparent
+                    opacity-0
+                    group-hover:opacity-100
+                    transition-all
+                    duration-500
+                    pointer-events-none
+                  "
                 />
 
                 {/* Image */}
                 <div className="p-3 sm:p-4">
                   <div className="overflow-hidden rounded-xl">
-                    <img
+                    <motion.img
                       src={service.image}
                       alt={service.title}
+                      whileHover={{ scale: 1.08 }}
+                      transition={{ duration: 0.5 }}
                       className="
-                    w-full
-                    h-[180px]
-                    sm:h-[200px]
-                    md:h-[220px]
-                    lg:h-[240px]
-                    object-cover
-                    transition-all
-                    duration-700
-                    group-hover:scale-105
-                  "
+                        w-full
+                        h-[180px]
+                        sm:h-[200px]
+                        md:h-[220px]
+                        lg:h-[240px]
+                        object-cover
+                      "
                     />
                   </div>
                 </div>
@@ -170,40 +212,44 @@ export default function ServicesSection() {
                 {/* Content */}
                 <div className="px-5 sm:px-6 pb-6 flex flex-col flex-1 relative z-10">
                   {/* Icon */}
-                  <div
+                  <motion.div
+                    whileHover={{
+                      rotate: 360,
+                      scale: 1.15,
+                    }}
+                    transition={{ duration: 0.6 }}
                     className="
-                  w-11
-                  h-11
-                  sm:w-12
-                  sm:h-12
-                  rounded-full
-                  bg-[#FFF7EB]
-                  flex
-                  items-center
-                  justify-center
-                  text-[#D08A1A]
-                  transition-all
-                  duration-500
-                  group-hover:bg-[#D08A1A]
-                  group-hover:text-white
-                "
+                      w-11
+                      h-11
+                      sm:w-12
+                      sm:h-12
+                      rounded-full
+                      bg-[#FFF7EB]
+                      flex
+                      items-center
+                      justify-center
+                      text-[#D08A1A]
+                      group-hover:bg-[#D08A1A]
+                      group-hover:text-white
+                      transition-all
+                      duration-500
+                    "
                   >
                     <Icon size={20} />
-                  </div>
+                  </motion.div>
 
                   {/* Title */}
                   <h3
                     className="
-                  mt-4
-                  sm:mt-5
-                  text-xl
-                  sm:text-[22px]
-                  font-bold
-                  text-[#0F172A]
-                  transition-all
-                  duration-500
-                  group-hover:text-[#D08A1A]
-                "
+                      mt-4
+                      sm:mt-5
+                      text-xl
+                      sm:text-[22px]
+                      font-bold
+                      text-[#0F172A]
+                      group-hover:text-[#D08A1A]
+                      transition-all
+                    "
                   >
                     {service.title}
                   </h3>
@@ -211,50 +257,51 @@ export default function ServicesSection() {
                   {/* Description */}
                   <p
                     className="
-                  mt-3
-                  sm:mt-4
-                  text-[#64748B]
-                  text-sm
-                  sm:text-base
-                  leading-7
-                  flex-1
-                "
+                      mt-3
+                      sm:mt-4
+                      text-[#64748B]
+                      text-sm
+                      sm:text-base
+                      leading-7
+                      flex-1
+                    "
                   >
                     {service.description}
                   </p>
 
                   {/* Button */}
-                  <button
+                  <motion.button
+                    whileHover={{ x: 6 }}
                     className="
-                  mt-auto
-                  pt-5
-                  flex
-                  items-center
-                  gap-2
-                  font-semibold
-                  text-sm
-                  sm:text-base
-                  text-[#0F172A]
-                  transition-all
-                  duration-500
-                  group-hover:text-[#D08A1A]
-                "
+                      mt-auto
+                      pt-5
+                      flex
+                      items-center
+                      gap-2
+                      font-semibold
+                      text-sm
+                      sm:text-base
+                      text-[#0F172A]
+                      group-hover:text-[#D08A1A]
+                    "
                   >
                     EXPLORE
-                    <ArrowRight
-                      size={16}
-                      className="
-                    transition-all
-                    duration-500
-                    group-hover:translate-x-2
-                  "
-                    />
-                  </button>
+
+                    <motion.div
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                      }}
+                    >
+                      <ArrowRight size={18} />
+                    </motion.div>
+                  </motion.button>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
